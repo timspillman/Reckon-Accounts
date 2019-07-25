@@ -14,8 +14,10 @@ set TITLE=QuickBooks Installation
 TITLE %TITLE%
 
 ::Run As Administrator Check
-AT > NUL
-IF NOT %ERRORLEVEL% EQU 0 (
+NET SESSION >NUL 2>&1
+IF %ERRORLEVEL% EQU 0 (
+	GOTO Start
+) ELSE (
 	ECHO.
 	ECHO Please run this file as an Administrator!.
 	ECHO Exiting...
