@@ -1,17 +1,32 @@
 ::QuickBooks Installation - Firewall Exceptions & User Permissions (QB-INSTALLPREP.bat)
 ::Place QB-INSTALLPREP.bat file in your datafile (QBW) location.
+::Run As Administrator
 @ECHO OFF
 SETLOCAL
 CLS
+
 ::Usergroup Default Setting (change if required)
 :: example(set DEFAULT_USERGROUP=QuickBooks_Users) will set folder permissions of the 'QuickBooks_Users' group to modify.
 set DEFAULT_USERGROUP=everyone
 
-::DONT NOT CHANGE
+::DONT NOT CHANGE BELOW
 set TITLE=QuickBooks Installation
+TITLE %TITLE%
+
+::Run As Administrator Check
+AT > NUL
+IF NOT %ERRORLEVEL% EQU 0 (
+	ECHO.
+	ECHO Please run this file as an Administrator!.
+	ECHO Exiting...
+	Pause
+	EXIT /B 1
+)
+
 set DATAFOLDER=%~dp0
 IF %DATAFOLDER:~-1%==\ SET DATAFOLDER=%DATAFOLDER:~0,-1%
 GOTO Start
+
 :Start
 ECHO *** %TITLE% ***
 ECHO *** Firewall Exceptions and Folder Permissions ***
@@ -71,13 +86,13 @@ IF EXIST "%PROGRAMFILES(X86)%" ( GOTO 64Bit ) ELSE ( GOTO 32Bit )
 
 :32Bit
 set INSTALL=%PROGRAMFILES%
-goto Action
+goto Exceptions
 
 :64Bit
 set INSTALL=%PROGRAMFILES(X86)%
-goto Action
+goto Exceptions
 
-:Action
+:Exceptions
 ECHO.
 ECHO 1.Add %YEAR% Exceptions
 ECHO 2.Delete %YEAR% Exceptions
