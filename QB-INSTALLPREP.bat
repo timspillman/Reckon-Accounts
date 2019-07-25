@@ -25,11 +25,10 @@ IF %ERRORLEVEL% EQU 0 (
 	EXIT /B 1
 )
 
+:Start
 set DATAFOLDER=%~dp0
 IF %DATAFOLDER:~-1%==\ SET DATAFOLDER=%DATAFOLDER:~0,-1%
-GOTO Start
 
-:Start
 ECHO *** %TITLE% ***
 ECHO *** Firewall Exceptions and Folder Permissions ***
 ECHO.
