@@ -39,10 +39,12 @@ ECHO 4.Reckon Accounts 2016
 ECHO 5.Reckon Accounts 2017
 ECHO 6.Reckon Accounts 2018
 ECHO 7.Reckon Accounts 2019
+ECHO 7.Reckon Accounts 2020
 ECHO. 
 
 CHOICE /C 1234567 /M "Select a Version:"
 
+IF ERRORLEVEL 8 GOTO 2020
 IF ERRORLEVEL 7 GOTO 2019
 IF ERRORLEVEL 6 GOTO 2018
 IF ERRORLEVEL 5 GOTO 2017
@@ -98,6 +100,13 @@ set YEAR=2019
 set PORT=10182
 set FOLDER=Reckon Accounts 2019
 set DATAUSER=QBDataServiceUser28
+goto CheckOS
+
+:2020
+set YEAR=2020
+set PORT=10183
+set FOLDER=Reckon Accounts 2020
+set DATAUSER=QBDataServiceUser29
 goto CheckOS
 
 :CheckOS
