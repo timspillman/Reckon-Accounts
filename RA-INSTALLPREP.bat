@@ -39,10 +39,10 @@ ECHO 4.Reckon Accounts 2016
 ECHO 5.Reckon Accounts 2017
 ECHO 6.Reckon Accounts 2018
 ECHO 7.Reckon Accounts 2019
-ECHO 7.Reckon Accounts 2020
+ECHO 8.Reckon Accounts 2020
 ECHO. 
 
-CHOICE /C 1234567 /M "Select a Version:"
+CHOICE /C 12345678 /M "Select a Version:"
 
 IF ERRORLEVEL 8 GOTO 2020
 IF ERRORLEVEL 7 GOTO 2019
